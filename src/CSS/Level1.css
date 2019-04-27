@@ -1,0 +1,21 @@
+.canvas-container {
+    margin: 0 auto;
+    width: 1222px;
+  }
+
+  .canvas-container:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  canvas {
+    /* padding-left:100px; */
+    float: left;
+  }
+
+#myCanvas {
+    width:960;
+    height:540;
+    border:1px solid #000000;
+}

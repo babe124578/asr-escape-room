@@ -1,0 +1,9 @@
+table {
+    float: left;
+}
+
+.inventory {
+    width:135;
+    height:540;
+    border:1px solid #FFFFFF;
+}

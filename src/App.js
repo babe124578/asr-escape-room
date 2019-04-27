@@ -3,13 +3,13 @@ import React, { Component } from "react";
 import Startpage from "./Component/Startpage";
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       isStart: false
     };
   }
-  
+
   changeStart(status) {
     this.setState({
       isStart: status
@@ -19,7 +19,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Startpage></Startpage>
+        {this.state.isStart === false ? (
+          <Startpage></Startpage>) :
+          (null)
+        }
       </div>
     );
   }
