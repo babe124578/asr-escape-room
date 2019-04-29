@@ -1,6 +1,10 @@
+body {
+  background-color: #000000;
+}
 .canvas-container {
     margin: 0 auto;
-    width: 1222px;
+    width: 960px;
+    float: left;
   }
 
   .canvas-container:after {
@@ -14,8 +18,6 @@
     float: left;
   }
 
-#myCanvas {
-    width:960;
-    height:540;
+  .canva{
     border:1px solid #000000;
-}
+  }

@@ -1,5 +1,21 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from "react";
 import "../CSS/Level1.css"
+
+import door from "../images/Level1/door.jpg";
+import room from "../images/Level1/room.jpg";
+import knife from "../images/Level1/knife.jpg";
+import leftdesk from "../images/Level1/leftdesk.jpg";
+import noknife from "../images/Level1/noknife.jpg";
+import roomnoknife from "../images/Level1/roomnoknife.jpg";
+import closebox from "../images/Level1/box.tiff";
+import openbox from "../images/Level1/box_open.png";
+import roomBoxSafeKnife from "../images/Level1/room_withboth.jpg";
+import roomBoxSafeNoknife from "../images/Level1/room_both_noknife.jpg";
+import RoomOpenboxSafeNoknife from "../images/Level1/room_with_box_open.png";
+import backarrow from "../images/Level1/back-arrow.png";
+
+console.log(room)
 class Level1 extends Component {
   constructor(props) {
     super(props)
@@ -8,10 +24,10 @@ class Level1 extends Component {
     }
   }
   componentDidMount() {
-    var c = document.getElementById("myCanvas")
+    var canvas = this.refs.canvas;
     // eslint-disable-next-line no-unused-vars
-    var ctx = c.getContext("2d")
-    c.addEventListener("mousemove", changeCursor, false);
+    var ctx = canvas.getContext("2d")
+    canvas.addEventListener("mousemove", changeCursor, false);
     /**
          * A clickable object
          * inBounds returns true if co-ordinates are within the bounds of the object
@@ -61,7 +77,7 @@ class Level1 extends Component {
     function changeCursor(e) {
       e.preventDefault();
 
-      var rect = c.getBoundingClientRect();
+      var rect = canvas.getBoundingClientRect();
       var x = e.clientX - rect.left;
       var y = e.clientY - rect.top;
       console.log("move: (" + x + ", " + y + ")");
@@ -79,20 +95,12 @@ class Level1 extends Component {
         return false;
       }
       if (mouseoverobject()) {
-        c.style.cursor = "pointer";
+        canvas.style.cursor = "pointer";
       } else {
-        c.style.cursor = "default";
+        canvas.style.cursor = "default";
       }
     }
     /**defined all resource*/
-    console.log("passthisline")
-    
-    var door = "../images/door.jpg"
-    var knife = "../images/knife.jpg"
-    var leftdesk = "../images/leftdesk.jpg"
-    var noknife = "../images/noknife.jpg"
-    var room = "../images/room.jpg"
-    var roomnoknife = "../images/roomnoknife.jpg"
 
     function draw(v, c, w, h) {
       c.drawImage(v, 0, 0, w, h);
@@ -100,15 +108,14 @@ class Level1 extends Component {
         setTimeout(draw, 20, v, c, w, h);
       }
     }
-    var currentWall = 0;
+    var currentWall = 1;
     /**
-     * == 0 -> Startpage
-     * == 1 -> room
+     * == 1 -> roomBoxSafeKnife
      * == 2 -> knife
-     * == 3 -> no knife
-     * == 4 -> leftdesk
+     * == 3 -> noknife
+     * == 4 -> roomBoxSafeNoknife
      * == 5 -> door
-     * == 6 -> 
+     * == 6 -> RoomOpenBoxSafeNoknife
      * == 7 -> 
      */
     var hold = 0;
@@ -125,37 +132,56 @@ class Level1 extends Component {
     }
     var img1 = new Image();
     var img2 = new Image();
-    img1.onload = function () {
-      ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, c.width, c.height);
-      ctx.drawImage(img2, 0, 0, img2.width, img2.height, 0, 0, c.width, c.height);
+    img1.src = roomBoxSafeKnife;
+    img1.onload = () => {
+      ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, canvas.width, canvas.height);
     };
-    img1.src = room;
-
-
-
-    c.addEventListener("mousedown", clicked, false);
+    img2.onload = () => {
+      ctx.drawImage(img2, 0, 476);
+    };
+    canvas.addEventListener("mousedown", clicked, false);
 
     function clicked(e) {
       e.preventDefault();
 
-      var rect = c.getBoundingClientRect();
+      var rect = canvas.getBoundingClientRect();
       var x = e.clientX - rect.left;
       var y = e.clientY - rect.top;
 
       switch (currentWall) {
-        case 0:
+        case 1:
           if (x >= 730 && x < 770 && y >= 290 && y <= 310) {
             img1.src = knife;
             currentWall = 2;
+            img2.src = backarrow;
           }
           break;
         case 2:
           if (x >= 372 && x < 613 && y >= 327 && y <= 377) {
             img1.src = noknife;
+            img2.src = backarrow;
             currentWall = 3;
           }
           break;
         case 3:
+          if (x >= 0 && x < 64 && y >= 476 && y <= 540) {
+            img1.src = roomBoxSafeNoknife;
+            currentWall = 4;
+          }
+          break;
+        case 4:
+          if (x >= 372 && x < 613 && y >= 327 && y <= 377) {
+            img1.src = knife;
+            currentWall = 2;
+          }
+          break;
+        case 5:
+          if (x >= 372 && x < 613 && y >= 327 && y <= 377) {
+            img1.src = knife;
+            currentWall = 2;
+          }
+          break;
+        case 6:
           if (x >= 372 && x < 613 && y >= 327 && y <= 377) {
             img1.src = knife;
             currentWall = 2;
@@ -168,11 +194,8 @@ class Level1 extends Component {
   }
   render() {
     return (
-      <div>
-        <div className="canvas-container">
-          <canvas id="myCanvas"></canvas>
-        </div>
-        <img src={require('../images/door.jpg')} alt="aaa" />
+      <div className="canvas-container">
+        <canvas className="canva" ref="canvas" width={960} height={540}></canvas>
       </div>
     );
   }
