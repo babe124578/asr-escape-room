@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       isStart: false
     };
-    this.changeStart=this.changeStart.bind(this);
+    this.changeStart = this.changeStart.bind(this);
   }
 
   changeStart(status) {
@@ -23,15 +23,14 @@ class App extends Component {
     return (
       <div>
         {this.state.isStart === false ? (
-          <Startpage
-            changeStart={this.changeStart}/>) : (
-            <div>
-              <SpeechBar/>
-              <Level1/>
-              <ItemBarLevel1/>
-            </div>
-          )
-        }
+          <Startpage changeStart={this.changeStart} />
+        ) : (
+          <div>
+            <SpeechBar />
+            <Level1 />
+            <ItemBarLevel1 />
+          </div>
+        )}
       </div>
     );
   }

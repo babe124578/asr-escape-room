@@ -102,8 +102,8 @@ class Level1 extends Component {
             img1.src = noknife;
             currentWall = 3;
           } else if (x >= 280 && x < 380 && y >= 380 && y <= 490) {
-              img1.src = popupCloseboxWithoutKnifeInroom;
-              currentWall = 7;
+            img1.src = popupCloseboxWithoutKnifeInroom;
+            currentWall = 7;
           }
           break;
         case 5: //ห้องที่กล่องเปิดแล้ว
@@ -112,10 +112,26 @@ class Level1 extends Component {
             currentWall = 3;
           }
           break;
-        case 6:
-          if (x >= 372 && x < 613 && y >= 327 && y <= 377) {
-            img1.src = knife;
-            currentWall = 2;
+        case 6: //popupcloseknife
+          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+            img1.src = roomBoxSafeKnife;
+            currentWall = 1;
+          }
+          break;
+        case 7: //popupclosenoknife
+          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+            img1.src = roomBoxSafeNoknife;
+            currentWall = 4;
+          } else if (x >= 380 && x < 580 && y >= 160 && y <= 380) {
+            isBoxOpen = true;
+            console.log("box opened");
+            currentWall = 8;
+          }
+          break;
+        case 8: //popupopenbox
+          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+            img1.src = RoomOpenboxSafeNoknife;
+            currentWall = 5;
           }
           break;
         default:
