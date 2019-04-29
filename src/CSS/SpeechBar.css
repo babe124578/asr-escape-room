@@ -1,5 +1,6 @@
 .speechbar {
     width: 1095px;
     height: 100px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #000000;
+    background-color: #FFFFFF;
 }

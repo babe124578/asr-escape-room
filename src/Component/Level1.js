@@ -35,6 +35,9 @@ class Level1 extends Component {
      * == 5 -> RoomOpenBoxSafeNoknife
      * == 6 -> popupCloseboxWithKnifeInroom
      * == 7 -> popupCloseboxWithoutKnifeInroom
+     * == 8 -> popupOpenbox -- ยังไม่ได้สร้าง image
+     * == 9 -> zoomAtSafeWithNumpad
+     * == 10 -> door
      */
 
     var img1 = new Image();
@@ -74,6 +77,9 @@ class Level1 extends Component {
           } else if (x >= 280 && x < 380 && y >= 380 && y <= 490) {
             img1.src = popupCloseboxWithKnifeInroom;
             currentWall = 6;
+          } else if (x >= 84 && x < 250 && y >= 244 && y <= 460) {
+            img1.src = leftdesk; //temporary(for test only)
+            currentWall = 9;
           }
           break;
         case 2: //ตู้ขวา with knife
@@ -122,7 +128,7 @@ class Level1 extends Component {
           if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
             img1.src = roomBoxSafeNoknife;
             currentWall = 4;
-          } else if (x >= 380 && x < 580 && y >= 160 && y <= 380) {
+          } else if (x >= 380 && x < 580 && y >= 160 && y <= 380 && hasKnife === true) {
             isBoxOpen = true;
             console.log("box opened");
             currentWall = 8;
@@ -133,6 +139,8 @@ class Level1 extends Component {
             img1.src = RoomOpenboxSafeNoknife;
             currentWall = 5;
           }
+          break;
+        case 9:
           break;
         default:
           break;

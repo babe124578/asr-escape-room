@@ -4,7 +4,7 @@ class ItemBarLevel1 extends Component {
 
     render() {
         return (
-            <div className="ItemBar"></div>
+            <div className="itemBar"></div>
         );
     }
 }
