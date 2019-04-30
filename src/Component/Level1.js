@@ -10,7 +10,7 @@ import roomBoxSafeNoknife from "../images/Level1/room_both_noknife.jpg";
 import RoomOpenboxSafeNoknife from "../images/Level1/room_with_box_open.png";
 import popupCloseboxWithKnifeInroom from "../images/Level1/popup-closebox-knife.jpg";
 import popupCloseboxWithoutKnifeInroom from "../images/Level1/popup-closebox-noknife.jpg";
-
+import popupBoxOpenWithPassword from "../images/Level1/box_open_with_passW.png"
 class Level1 extends Component {
   componentDidMount() {
     //for draw canvas
@@ -130,7 +130,7 @@ class Level1 extends Component {
             currentWall = 4;
           } else if (x >= 380 && x < 580 && y >= 160 && y <= 380 && hasKnife === true) {
             isBoxOpen = true;
-            console.log("box opened");
+            img1.src = popupBoxOpenWithPassword;
             currentWall = 8;
           }
           break;
