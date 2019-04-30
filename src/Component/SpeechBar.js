@@ -4,7 +4,8 @@ class SpeechBar extends Component {
     
     render() {
       return (
-        <div className="speechbar"></div>
+        <div className="speechbar"><p>{this.props.text}</p>
+        </div>
       );
     }
   }

@@ -7,12 +7,12 @@ import ItemBarLevel1 from "./Component/ItemBarLevel1";
 class App extends Component {
   constructor(props) {
     super(props);
+    this.text = "eiei";
     this.state = {
       isStart: false
     };
     this.changeStart = this.changeStart.bind(this);
   }
-
   changeStart(status) {
     this.setState({
       isStart: status
@@ -21,16 +21,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{margin:'30px'}}>
         {this.state.isStart === false ? (
           <Startpage changeStart={this.changeStart} />
-        ) : (
-          <div>
-            <SpeechBar />
+        ) :
             <Level1 />
-            <ItemBarLevel1 />
-          </div>
-        )}
+        }
       </div>
     );
   }
