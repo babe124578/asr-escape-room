@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../CSS/Level1.css";
 
 import door from "../images/Level1/door.jpg";
+
 import knife from "../images/Level1/knife.jpg";
 import leftdesk from "../images/Level1/leftdesk.jpg";
 import noknife from "../images/Level1/noknife.jpg";
@@ -10,14 +11,29 @@ import roomBoxSafeNoknife from "../images/Level1/room_both_noknife.jpg";
 import RoomOpenboxSafeNoknife from "../images/Level1/room_with_box_open.png";
 import popupCloseboxWithKnifeInroom from "../images/Level1/popup-closebox-knife.jpg";
 import popupCloseboxWithoutKnifeInroom from "../images/Level1/popup-closebox-noknife.jpg";
+<<<<<<< HEAD
 import popupBoxOpenWithPassword from "../images/Level1/box_open_with_passW.png"
+=======
+import SpeechBar from "./SpeechBar";
+import ItemBarLevel1 from "./ItemBarLevel1";
+
+>>>>>>> f5087342053b12ad9b8a1c45ca93275560af865a
 class Level1 extends Component {
+  constructor() {
+    super()
+    this.state = {
+      text:"asda"
+    }
+}
   componentDidMount() {
     //for draw canvas
-    var canvas = this.refs.canvas;
+    var canvas = this.refs.canvas; //Here we are simply finding the <canvas> element and saving it to a variable.
+    var eieiz = this.refs.eiei;
     var ctx = canvas.getContext("2d");
     canvas.addEventListener("mousemove", changeCursor, false);
-
+    this.setState({
+      text:"eiei"
+    })
     function changeCursor(e) {
       e.preventDefault();
       var rect = canvas.getBoundingClientRect();
@@ -59,7 +75,7 @@ class Level1 extends Component {
     canvas.addEventListener("mousedown", clicked, false); //เพื่ออรับพิกัด Mouse ตลอดเวลา
 
     var hasKnife = false; //ไม่มีมีดเปิดกล่องไม่ได้
-    var isSafeUnlock = false; //case true = มีกุญแจ
+    var hasKey = false; //case true = มีกุญแจ
     var isBoxOpen = false;
 
     function clicked(e) {
@@ -76,6 +92,7 @@ class Level1 extends Component {
             currentWall = 2;
           } else if (x >= 280 && x < 380 && y >= 380 && y <= 490) {
             img1.src = popupCloseboxWithKnifeInroom;
+            eieiz.src = leftdesk;
             currentWall = 6;
           } else if (x >= 84 && x < 250 && y >= 244 && y <= 460) {
             img1.src = leftdesk; //temporary(for test only)
@@ -147,10 +164,15 @@ class Level1 extends Component {
       }
     }
   }
+  
   render() {
     return (
-      <div className="canvas-container">
-        <canvas className="canva" ref="canvas" width={960} height={540} />
+      <div>
+        <SpeechBar text={this.state.text}/>
+        <div className="canvas-container">
+          <canvas className="canva" ref="canvas" width={960} height={540} />
+        </div>
+        <img ref="eiei" src={knife}    width={135} height={540} style={{float: "left"}}/>
       </div>
     );
   }
