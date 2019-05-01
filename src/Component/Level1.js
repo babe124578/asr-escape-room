@@ -14,6 +14,8 @@ import popupBoxOpenWithPassword from "../images/Level1/popup-openbox.jpg";
 import knifeImage from "../images/Level1/knife.png";
 import keyImage from "../images/Level1/key.png";
 import itemBar from "../images/Level1/itemBar.png"
+import safeclose from "../images/Level1/safeclose.jpg";
+import safeopen from "../images/Level1/safeopen.jpg";
 
 import SpeechBar from "./SpeechBar";
 
@@ -55,6 +57,8 @@ class Level1 extends Component {
      * == 8 -> popupOpenbox -- ยังไม่ได้สร้าง image
      * == 9 -> zoomAtSafeWithNumpad
      * == 10 -> door
+     * == 11 -> safeclose
+     * == 12 -> safeopen
      */
 
     var img1 = new Image();
@@ -105,12 +109,15 @@ class Level1 extends Component {
       );
     };
     canvas.addEventListener("mousedown", changeImage, false); //เพื่ออรับพิกัด Mouse ตลอดเวลา
-
+    
     var hasKnife = false; //ไม่มีมีดเปิดกล่องไม่ได้
     var hasKey = false; //case true = มีกุญแจ
     var isBoxOpen = false;
-
+    var teststring = '';
     function changeImage(e) {
+      console.log('haskey = '+hasKey);
+      console.log('hasknife = '+hasKnife);
+      console.log('isboxopen = '+isBoxOpen);
       e.preventDefault();
 
       var rect = canvas.getBoundingClientRect();
@@ -127,11 +134,22 @@ class Level1 extends Component {
             //eieiz.src = leftdesk;
             currentWall = 6;
           } else if (x >= 84 && x < 250 && y >= 244 && y <= 460) {
-            img1.src = leftdesk; //temporary(for test only)
-            currentWall = 9;
+            if (hasKey === false) {
+              img1.src = safeclose;
+              currentWall = 11;
+            } else {
+              img1.src = safeopen;
+              currentWall = 12;
+            }
           } else if (x >= 406 && x < 554 && y >= 146 && y <= 367) { //กดประตู
             img1.src = door;
             currentWall = 10;
+          } else {
+            if (teststring.length == 2) {
+              teststring = '';
+            }
+            teststring += '4';
+            console.log(teststring);
           }
           break;
         case 2: //ตู้ขวา with knife
@@ -166,6 +184,14 @@ class Level1 extends Component {
           } else if (x >= 406 && x < 554 && y >= 146 && y <= 367) { //กดประตู
             img1.src = door;
             currentWall = 10;
+          } else if (x >= 84 && x < 250 && y >= 244 && y <= 460) {
+            if (hasKey === false) {
+              img1.src = safeclose;
+              currentWall = 11;
+            } else {
+              img1.src = safeopen;
+              currentWall = 12;
+            }
           }
           break;
         case 5: //ห้องที่กล่องเปิดแล้ว
@@ -175,6 +201,14 @@ class Level1 extends Component {
           } else if (x >= 406 && x < 554 && y >= 146 && y <= 367) { //กดประตู
             img1.src = door;
             currentWall = 10;
+          } else if (x >= 84 && x < 250 && y >= 244 && y <= 460) {
+            if (hasKey === false) {
+              img1.src = safeclose;
+              currentWall = 11;
+            } else {
+              img1.src = safeopen;
+              currentWall = 12;
+            }
           }
           break;
         case 6: //popupcloseknife
@@ -226,6 +260,38 @@ class Level1 extends Component {
             }
           }
           break;
+        case 11:
+          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+            if (hasKnife == true && isBoxOpen === false) {
+              img1.src = roomBoxSafeNoknife;
+              currentWall = 4;
+            } else if (hasKnife === false) {
+              img1.src = roomBoxSafeKnife;
+              currentWall = 1;
+            } else if (isBoxOpen === false && hasKnife === true) {
+              img1.src = roomOpenboxSafeNoknife;
+              currentWall = 5;
+            }
+          } else if (x >= 357 && x < 604 && y >= 172 && y <= 420) {
+            img1.src = safeopen;
+            currentWall = 12;
+            hasKey = true;
+          }
+          break;
+        case 12:
+          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+            if (hasKnife == true && isBoxOpen === false) {
+              img1.src = roomBoxSafeNoknife;
+              currentWall = 4;
+            } else if (hasKnife === false) {
+              img1.src = roomBoxSafeKnife;
+              currentWall = 1;
+            } else if (isBoxOpen === true && hasKnife === true) {
+              img1.src = roomOpenboxSafeNoknife;
+              currentWall = 5;
+            }
+          }
+          break;
         default:
           break;
       }
@@ -238,7 +304,7 @@ class Level1 extends Component {
         <SpeechBar text={this.state.text} />
         <div className="canvas-container">
           <canvas className="canva" ref="canvas" width={960} height={540} />
-          <canvas classname="canva" ref="canvasItem" width={135} height={540} style={{ float: "left" }} />
+          <canvas className="canva" ref="canvasItem" width={135} height={540} style={{ float: "left" }} />
         </div>
       </div>
     );
