@@ -3,7 +3,6 @@ import "../CSS/Level1.css";
 
 import door from "../images/Level1/door.jpg";
 import knife from "../images/Level1/knife.jpg";
-import leftdesk from "../images/Level1/leftdesk.jpg";
 import noknife from "../images/Level1/noknife.jpg";
 import roomBoxSafeKnife from "../images/Level1/room_withboth.jpg";
 import roomBoxSafeNoknife from "../images/Level1/room_both_noknife.jpg";
@@ -145,7 +144,7 @@ class Level1 extends Component {
             img1.src = door;
             currentWall = 10;
           } else {
-            if (teststring.length == 2) {
+            if (teststring.length === 2) {
               teststring = '';
             }
             teststring += '4';
@@ -262,7 +261,7 @@ class Level1 extends Component {
           break;
         case 11:
           if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
-            if (hasKnife == true && isBoxOpen === false) {
+            if (hasKnife === true && isBoxOpen === false) {
               img1.src = roomBoxSafeNoknife;
               currentWall = 4;
             } else if (hasKnife === false) {
@@ -280,7 +279,7 @@ class Level1 extends Component {
           break;
         case 12:
           if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
-            if (hasKnife == true && isBoxOpen === false) {
+            if (hasKnife === true && isBoxOpen === false) {
               img1.src = roomBoxSafeNoknife;
               currentWall = 4;
             } else if (hasKnife === false) {
