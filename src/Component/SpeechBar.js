@@ -7,8 +7,8 @@ class SpeechBar extends Component {
   render() {
     return (
       <div className="speechbar">
-        <img ref="mic" src={microphone} alt="microphone" width={100} height={100}></img>
-        <h1 className="asrText">ทดสอบข้อความภาษาไทย</h1>
+        <img ref="mic" src={microphone} alt="microphone" width={100} height={100} onClick={{ /*รอเชื่อม ASR*/ }}></img>
+        <h1 className="asrText">ข้อความจาก ASR อยู่ตรงนี้</h1>
         <p className='texttest'>{this.props.text}</p>
       </div>
     );

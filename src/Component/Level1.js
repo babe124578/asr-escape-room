@@ -13,7 +13,7 @@ import popupBoxOpenWithPassword from "../images/Level1/popup-openbox.jpg";
 import knifeImage from "../images/Level1/knife.png";
 import keyImage from "../images/Level1/key.png";
 import itemBar from "../images/Level1/itemBar.png"
-import safeclose from "../images/Level1/safeclose.jpg";
+import safeclose from "../images/Level1/safeclose.png";
 import safeopen from "../images/Level1/safeopen.jpg";
 
 import SpeechBar from "./SpeechBar";
@@ -32,11 +32,15 @@ class Level1 extends Component {
     var ctxItem = canvasItem.getContext("2d");
     //var eieiz = this.refs.eiei;
     var ctx = canvas.getContext("2d");
+    ctx.font = "30px Arial"
+    ctx.fillStyle = "green";
     canvas.addEventListener("mousemove", changeCursor, false);
+
     this.setState({
       text: "eiei"
     })
-    function changeCursor(e) {
+
+    function changeCursor(e) { //getตำแหน่ง cursor บน canvas VIA console
       e.preventDefault();
       var rect = canvas.getBoundingClientRect();
       var x = e.clientX - rect.left;
@@ -53,8 +57,8 @@ class Level1 extends Component {
      * == 5 -> roomOpenBoxSafeNoknife
      * == 6 -> popupCloseboxWithKnifeInroom
      * == 7 -> popupCloseboxWithoutKnifeInroom
-     * == 8 -> popupOpenbox -- ยังไม่ได้สร้าง image
-     * == 9 -> zoomAtSafeWithNumpad
+     * == 8 -> popupOpenbox
+     * == 9 -> zoomAtSafeWithNumpad //อาจจะตัดออก(ขี้เกียจแก้สวิตช์)
      * == 10 -> door
      * == 11 -> safeclose
      * == 12 -> safeopen
@@ -108,15 +112,15 @@ class Level1 extends Component {
       );
     };
     canvas.addEventListener("mousedown", changeImage, false); //เพื่ออรับพิกัด Mouse ตลอดเวลา
-    
+
     var hasKnife = false; //ไม่มีมีดเปิดกล่องไม่ได้
     var hasKey = false; //case true = มีกุญแจ
     var isBoxOpen = false;
-    var teststring = '';
+    var playerPass = '';
     function changeImage(e) {
-      console.log('haskey = '+hasKey);
-      console.log('hasknife = '+hasKnife);
-      console.log('isboxopen = '+isBoxOpen);
+      console.log('haskey = ' + hasKey);
+      console.log('hasknife = ' + hasKnife);
+      console.log('isboxopen = ' + isBoxOpen);
       e.preventDefault();
 
       var rect = canvas.getBoundingClientRect();
@@ -143,12 +147,6 @@ class Level1 extends Component {
           } else if (x >= 406 && x < 554 && y >= 146 && y <= 367) { //กดประตู
             img1.src = door;
             currentWall = 10;
-          } else {
-            if (teststring.length === 2) {
-              teststring = '';
-            }
-            teststring += '4';
-            console.log(teststring);
           }
           break;
         case 2: //ตู้ขวา with knife
@@ -237,7 +235,6 @@ class Level1 extends Component {
             hasKey = true;
             img1.src = roomOpenboxSafeNoknife;
             currentWall = 5;
-            item2.src = keyImage;
           }
           break;
         case 10: // door
@@ -255,7 +252,10 @@ class Level1 extends Component {
           } else if (x >= 309 && x < 651 && y >= 0 && y <= 491) { //กดประตูเพื่อเปิด
             if (hasKey) {
               console.log("จบ")
-              return <p>จบแล้วจ้า</p>
+              setTimeout(function () {
+                ctx.font = "150px Roboto";
+                ctx.fillText("จบแล้วจ้า", canvas.width / 2 - 300 , canvas.height / 2);
+              }, 20);
             }
           }
           break;
@@ -271,10 +271,168 @@ class Level1 extends Component {
               img1.src = roomOpenboxSafeNoknife;
               currentWall = 5;
             }
-          } else if (x >= 357 && x < 604 && y >= 172 && y <= 420) {
-            img1.src = safeopen;
-            currentWall = 12;
-            hasKey = true;
+          } else if (x >= 476 && x < 492 && y >= 375 && y <= 387) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '0';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }
+            console.log(playerPass);
+          } else if (x >= 444 && x < 463 && y >= 325 && y <= 338) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '1';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }
+            console.log(playerPass);
+          } else if (x >= 476 && x < 492 && y >= 325 && y <= 338) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '2';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }
+            console.log(playerPass);
+          } else if (x >= 505 && x < 521 && y >= 325 && y <= 338) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '3';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }
+            console.log(playerPass);
+          } else if (x >= 444 && x < 463 && y >= 343 && y <= 354) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '4';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              setTimeout(function () {
+                img1.src = safeopen;
+                currentWall = 12;
+                item2.src = keyImage;
+                hasKey = true;
+              }, 30);
+            }
+            console.log(playerPass);
+          } else if (x >= 476 && x < 492 && y >= 343 && y <= 354) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '5';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }
+            console.log(playerPass);
+          } else if (x >= 505 && x < 521 && y >= 343 && y <= 354) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '6';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }
+            console.log(playerPass);
+          } else if (x >= 444 && x < 463 && y >= 359 && y <= 371) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '7';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }
+            console.log(playerPass);
+          } else if (x >= 476 && x < 492 && y >= 359 && y <= 371) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '8';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }
+            console.log(playerPass);
+          } else if (x >= 505 && x < 521 && y >= 359 && y <= 371) {
+            if (playerPass.length === 2) {
+              playerPass = '';
+            }
+            playerPass += '9';
+            img1.src = safeclose;
+            setTimeout(function () {
+              ctx.fillText(playerPass, 465, 302);
+            }, 20);
+            if (playerPass === '44') {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }
+            console.log(playerPass);
           }
           break;
         case 12:

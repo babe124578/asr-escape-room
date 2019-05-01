@@ -1,4 +1,6 @@
 .startButton {
-    margin-top: calc(320px - 10.5px);
-    margin-left: calc(1095px/2 - 43.19px);
+    margin-top: calc(320px - 20px);
+    margin-left: calc(1095px/2 - 50px);
+    height: 40px;
+    width: 100px;
 }
