@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 
 import Startpage from "./Component/Startpage";
-import SpeechBar from "./Component/SpeechBar";
 import Level1 from "./Component/Level1";
-import ItemBarLevel1 from "./Component/ItemBarLevel1";
+import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +20,7 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{margin:'30px'}}>
+      <div >
         {this.state.isStart === false ? (
           <Startpage changeStart={this.changeStart} />
         ) :

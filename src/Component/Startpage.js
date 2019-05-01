@@ -9,6 +9,7 @@ class StartPage extends Component {
             onClick={e => {
                 this.props.changeStart(true);
             }}
+            className="startButton"
             >click to start</button>
         
         </div>

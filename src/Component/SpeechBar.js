@@ -8,7 +8,8 @@ class SpeechBar extends Component {
     return (
       <div className="speechbar">
         <img ref="mic" src={microphone} alt="microphone" width={100} height={100}></img>
-        <p>{this.props.text}</p>
+        <h1 className="asrText">ทดสอบข้อความภาษาไทย</h1>
+        <p classname='texttest'>{this.props.text}</p>
       </div>
     );
   }

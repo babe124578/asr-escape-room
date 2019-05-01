@@ -3,4 +3,9 @@
     height: 100px;
     border: 1px solid #000000;
     background-color: #FFFFFF;
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+.asrText {
+    margin-left: 25px;
 }

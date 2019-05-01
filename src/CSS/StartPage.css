@@ -1,4 +1,4 @@
-.startPage {
-    margin-top: calc(50vh - 10.5px);
-    margin-left: calc(50vw - 43.19px);
+.startButton {
+    margin-top: calc(320px - 10.5px);
+    margin-left: calc(1095px/2 - 43.19px);
 }
