@@ -22,10 +22,15 @@ class Level1 extends Component {
   constructor() {
     super()
     this.state = {
-      text: "test text"
+      text: "test text",
+      temp: ""
     }
   }
   componentDidMount() {
+    String.prototype.replaceAll = function (search, replacement) {
+      var target = this;
+      return target.split(search).join(replacement);
+    };
     //for draw canvas
     var canvas = this.refs.canvas; //Here we are simply finding the <canvas> element and saving it to a variable.
     var canvasItem = this.refs.canvasItem;
@@ -63,6 +68,19 @@ class Level1 extends Component {
      * == 11 -> safeclose
      * == 12 -> safeopen
      */
+    var asrtext = this.state.temp;
+    asrtext = asrtext.replaceAll(" ", "");
+    asrtext = asrtext.replaceAll(".", "");
+    asrtext = asrtext.replaceAll("ศูนย์", "0");
+    asrtext = asrtext.replaceAll("หนึ่ง", "1");
+    asrtext = asrtext.replaceAll("สอง", "2");
+    asrtext = asrtext.replaceAll("สาม", "3");
+    asrtext = asrtext.replaceAll("สี่", "4");
+    asrtext = asrtext.replaceAll("ห้า", "5");
+    asrtext = asrtext.replaceAll("หก", "6");
+    asrtext = asrtext.replaceAll("เจ็ด", "7");
+    asrtext = asrtext.replaceAll("แปด", "8");
+    asrtext = asrtext.replaceAll("เก้า", "9");
 
     var img1 = new Image();
     var img2 = new Image();
@@ -117,6 +135,7 @@ class Level1 extends Component {
     var hasKey = false; //case true = มีกุญแจ
     var isBoxOpen = false;
     var playerPass = '';
+
     function changeImage(e) {
       console.log('haskey = ' + hasKey);
       console.log('hasknife = ' + hasKnife);
@@ -129,14 +148,14 @@ class Level1 extends Component {
 
       switch (currentWall) {
         case 1: //room with everything
-          if (x >= 700 && x < 900 && y >= 160 && y <= 400) {
+          if ((x >= 700 && x < 900 && y >= 160 && y <= 400) || asrtext === "ดูตู้ข้างขวา") {
             img1.src = knife;
             currentWall = 2;
-          } else if (x >= 280 && x < 380 && y >= 380 && y <= 490) {
+          } else if ((x >= 280 && x < 380 && y >= 380 && y <= 490) || asrtext === "ดูกล่อง") {
             img1.src = popupCloseboxWithKnifeInroom;
             //eieiz.src = leftdesk;
             currentWall = 6;
-          } else if (x >= 84 && x < 250 && y >= 244 && y <= 460) {
+          } else if ((x >= 84 && x < 250 && y >= 244 && y <= 460) || asrtext === "ดูตู้ข้างซ้าย") {
             if (hasKey === false) {
               img1.src = safeclose;
               currentWall = 11;
@@ -144,24 +163,24 @@ class Level1 extends Component {
               img1.src = safeopen;
               currentWall = 12;
             }
-          } else if (x >= 406 && x < 554 && y >= 146 && y <= 367) { //กดประตู
+          } else if ((x >= 406 && x < 554 && y >= 146 && y <= 367) || asrtext === "ดูประตู") { //กดประตู
             img1.src = door;
             currentWall = 10;
           }
           break;
         case 2: //ตู้ขวา with knife
-          if (x >= 372 && x < 613 && y >= 327 && y <= 377) {
+          if ((x >= 372 && x < 613 && y >= 327 && y <= 377) || asrtext === "หยิบมีด") {
             img1.src = noknife;
             hasKnife = true;
             currentWall = 3;
             item1.src = knifeImage;
-          } else if (x >= 0 && x < 64 && y >= 0 && y <= 64) {
+          } else if ((x >= 0 && x < 64 && y >= 0 && y <= 64) || asrtext === "ย้อนกลับ") {
             img1.src = roomBoxSafeKnife;
             currentWall = 1;
           }
           break;
         case 3: //ตู้ขวา without knife
-          if (x >= 0 && x < 64 && y >= 0 && y <= 64) {
+          if ((x >= 0 && x < 64 && y >= 0 && y <= 64) || asrtext === "ย้อนกลับ") {
             if (isBoxOpen === false) {
               img1.src = roomBoxSafeNoknife;
               currentWall = 4;
@@ -172,16 +191,16 @@ class Level1 extends Component {
           }
           break;
         case 4: //room with everything except knife
-          if (x >= 700 && x < 900 && y >= 160 && y <= 400) {
+          if ((x >= 700 && x < 900 && y >= 160 && y <= 400) || asrtext === "ดูตู้ข้างขวา") {
             img1.src = noknife;
             currentWall = 3;
-          } else if (x >= 280 && x < 380 && y >= 380 && y <= 490) {
+          } else if ((x >= 280 && x < 380 && y >= 380 && y <= 490) || asrtext === "ดูกล่อง") {
             img1.src = popupCloseboxWithoutKnifeInroom;
             currentWall = 7;
-          } else if (x >= 406 && x < 554 && y >= 146 && y <= 367) { //กดประตู
+          } else if ((x >= 406 && x < 554 && y >= 146 && y <= 367) || asrtext === "ดูประตู") { //กดประตู
             img1.src = door;
             currentWall = 10;
-          } else if (x >= 84 && x < 250 && y >= 244 && y <= 460) {
+          } else if ((x >= 84 && x < 250 && y >= 244 && y <= 460) || "ดูตู้ข้างซ้าย") {
             if (hasKey === false) {
               img1.src = safeclose;
               currentWall = 11;
@@ -192,13 +211,13 @@ class Level1 extends Component {
           }
           break;
         case 5: //ห้องที่กล่องเปิดแล้ว
-          if (x >= 700 && x < 900 && y >= 160 && y <= 400) {
+          if ((x >= 700 && x < 900 && y >= 160 && y <= 400) || asrtext === "ดูตู้ข้างขวา") {
             img1.src = noknife;
             currentWall = 3;
-          } else if (x >= 406 && x < 554 && y >= 146 && y <= 367) { //กดประตู
+          } else if ((x >= 406 && x < 554 && y >= 146 && y <= 367) || asrtext === "ดูประตู") { //กดประตู
             img1.src = door;
             currentWall = 10;
-          } else if (x >= 84 && x < 250 && y >= 244 && y <= 460) {
+          } else if ((x >= 84 && x < 250 && y >= 244 && y <= 460) || asrtext === "ดูตู้ข้างซ้าย") {
             if (hasKey === false) {
               img1.src = safeclose;
               currentWall = 11;
@@ -209,36 +228,36 @@ class Level1 extends Component {
           }
           break;
         case 6: //popupcloseknife
-          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+          if ((x >= 0 && x < 64 && y >= 0 && y <= 56) || asrtext === "ย้อนกลับ") {
             img1.src = roomBoxSafeKnife;
             currentWall = 1;
           }
           break;
         case 7: //popupclosenoknife
-          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+          if ((x >= 0 && x < 64 && y >= 0 && y <= 56) || asrtext === "ย้อนกลับ") {
             img1.src = roomBoxSafeNoknife;
             currentWall = 4;
-          } else if (x >= 380 && x < 580 && y >= 160 && y <= 380 && hasKnife === true) {
+          } else if ((x >= 380 && x < 580 && y >= 160 && y <= 380 && hasKnife === true) || asrtext === "ใช้มีดเปิดกล่อง") {
             isBoxOpen = true;
             img1.src = popupBoxOpenWithPassword;
             currentWall = 8;
           }
           break;
         case 8: //popupopenbox
-          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+          if ((x >= 0 && x < 64 && y >= 0 && y <= 56) || asrtext === "ย้อนกลับ") {
             img1.src = roomOpenboxSafeNoknife;
             currentWall = 5;
           }
           break;
         case 9: // leftdesk
-          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+          if ((x >= 0 && x < 64 && y >= 0 && y <= 56) || asrtext === "ย้อนกลับ") {
             hasKey = true;
             img1.src = roomOpenboxSafeNoknife;
             currentWall = 5;
           }
           break;
         case 10: // door
-          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+          if ((x >= 0 && x < 64 && y >= 0 && y <= 56) || asrtext === "ย้อนกลับ") {
             if (isBoxOpen === true) {
               img1.src = roomOpenboxSafeNoknife;
               currentWall = 5;
@@ -249,18 +268,29 @@ class Level1 extends Component {
               img1.src = roomBoxSafeKnife;
               currentWall = 1;
             }
-          } else if (x >= 309 && x < 651 && y >= 0 && y <= 491) { //กดประตูเพื่อเปิด
+          } else if ((x >= 309 && x < 651 && y >= 0 && y <= 491) || asrtext === "ใช้กุญแจเปิดประตู") { //กดประตูเพื่อเปิด
             if (hasKey) {
               console.log("จบ")
               setTimeout(function () {
                 ctx.font = "150px Roboto";
-                ctx.fillText("จบแล้วจ้า", canvas.width / 2 - 300 , canvas.height / 2);
+                ctx.fillText("จบแล้วจ้า", canvas.width / 2 - 300, canvas.height / 2);
               }, 20);
             }
           }
           break;
         case 11:
-          if (x >= 0 && x < 64 && y >= 0 && y <= 56) {
+          if (asrtext.parseInt != NaN) {
+            ctx.fillText(asrtext, 465, 302);
+          }
+          if (asrtext === '44'){
+            setTimeout(function () {
+              img1.src = safeopen;
+              currentWall = 12;
+              item2.src = keyImage;
+              hasKey = true;
+            }, 30);
+          }
+          if ((x >= 0 && x < 64 && y >= 0 && y <= 56) || asrtext === "ย้อนกลับ") {
             if (hasKnife === true && isBoxOpen === false) {
               img1.src = roomBoxSafeNoknife;
               currentWall = 4;
