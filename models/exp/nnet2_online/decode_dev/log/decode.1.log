@@ -1,0 +1,76 @@
+# online2-wav-nnet2-latgen-faster --online=true --do-endpointing=false --config=exp/nnet2_online/conf/online_nnet2_decoding.conf --max-active=7000 --beam=15.0 --lattice-beam=6.0 --acoustic-scale=0.1 --word-symbol-table=exp/nnet2_online/graph/words.txt exp/nnet2_online/final.mdl exp/nnet2_online/graph/HCLG.fst ark:exp/nnet2_online/decode_dev/per_utt/utt2spk.1 "ark,s,cs:wav-copy scp,p:data/dev/split1/1/wav.scp ark:- |" "ark:|gzip -c > exp/nnet2_online/decode_dev/lat.1.gz" 
+# Started at Mon Apr 29 03:58:44 UTC 2019
+#
+online2-wav-nnet2-latgen-faster --online=true --do-endpointing=false --config=exp/nnet2_online/conf/online_nnet2_decoding.conf --max-active=7000 --beam=15.0 --lattice-beam=6.0 --acoustic-scale=0.1 --word-symbol-table=exp/nnet2_online/graph/words.txt exp/nnet2_online/final.mdl exp/nnet2_online/graph/HCLG.fst ark:exp/nnet2_online/decode_dev/per_utt/utt2spk.1 'ark,s,cs:wav-copy scp,p:data/dev/split1/1/wav.scp ark:- |' 'ark:|gzip -c > exp/nnet2_online/decode_dev/lat.1.gz' 
+LOG (online2-wav-nnet2-latgen-faster:ComputeDerivedVars():ivector-extractor.cc:182) Computing derived variables for iVector extractor
+LOG (online2-wav-nnet2-latgen-faster:ComputeDerivedVars():ivector-extractor.cc:203) Done.
+wav-copy scp,p:data/dev/split1/1/wav.scp ark:- 
+1_015 ใช้ มีด 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_015
+1_016 เปิด กล่อง 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_016
+1_017 เปิด ประตู 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_017
+1_018 เปิด ลิ้นชัก ชั้น บน 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_018
+1_019 เปิด ลิ้นชัก ชั้น ล่าง 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_019
+1_020 ปลดล็อค 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_020
+1_021 ด่าน ก่อนหน้า ห้า 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_021
+1_022 ด่าน ถัดไป 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_022
+1_023 ย้อน ล่าง 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_023
+1_024 ศูนย์ ศูนย์ 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 1_024
+2_000 ดู ตู้ ข้าง ซ้าย 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_000
+2_001 ดู ตู้ ล่าง ข้าง 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_001
+2_002 ศูนย์ เก้า 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_002
+2_003 ดู กล่อง 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_003
+2_004 ดู หก 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_004
+2_005 ดู ลิ้นชัก 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_005
+2_006 ดู กำแพง 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_006
+2_007 หยิบ กุญแจ ห้า 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_007
+2_008 หยิบ เหรียญ 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_008
+2_009 หยิบ ไขควง 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 2_009
+3_010 หยิบ มีด 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_010
+3_011 ใช้ กุญแจ ไข ลิ้นชัก ชั้น บน 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_011
+3_012 ใช้ กุญแจ เปิด ประตู 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_012
+3_013 ใช้ เหรียญ 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_013
+3_014 ใช้ ไขควง 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_014
+3_015 ใช้ มีด 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_015
+3_016 เปิด กล่อง 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_016
+LOG (wav-copy:main():wav-copy.cc:56) Copied 30 wave files
+3_017 เปิด ประตู 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_017
+3_018 เปิด ลิ้นชัก ชั้น บน 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_018
+3_068 สี่ สี่ 
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:272) Decoded utterance 3_068
+LOG (online2-wav-nnet2-latgen-faster:Print():online-timing.cc:36) Timing stats: real-time factor was 1.04887 (note: this cannot be less than one.)
+LOG (online2-wav-nnet2-latgen-faster:Print():online-timing.cc:38) Average delay was 0.0546404 seconds.
+LOG (online2-wav-nnet2-latgen-faster:Print():online-timing.cc:42) Percentage of time spent idling was 75.6745
+LOG (online2-wav-nnet2-latgen-faster:Print():online-timing.cc:44) Longest delay was 0.121445 seconds for utterance '2_000'
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:278) Decoded 30 utterances, 0 with errors.
+LOG (online2-wav-nnet2-latgen-faster:main():online2-wav-nnet2-latgen-faster.cc:280) Overall likelihood per frame was 0.202992 per frame over 3293 frames.
+# Accounting: time=10 threads=1
+# Ended (code 0) at Mon Apr 29 03:58:54 UTC 2019, elapsed time 10 seconds

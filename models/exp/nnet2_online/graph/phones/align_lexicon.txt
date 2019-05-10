@@ -1,0 +1,39 @@
+!SIL !SIL SIL_S
+<eps> <eps> SIL
+กลับ กลับ kl_B a_I p^_E
+กล่อง กล่อง kl_B @_I ng^_E
+กำแพง กำแพง k_B a_I m^_I ph_I xx_I ng^_E
+กุญแจ กุญแจ k_B u_I n^_I c_I xx_E
+ก่อนหน้า ก่อนหน้า k_B @@_I n^_I n_I aa_E
+ขวา ขวา khw_B aa_E
+ข้าง ข้าง kh_B aa_I ng^_E
+ชั้น ชั้น ch_B a_I n^_E
+ซ้าย ซ้าย s_B aa_I j^_E
+ดู ดู d_B uu_E
+ด่าน ด่าน d_B aa_I n^_E
+ตู้ ตู้ t_B uu_E
+ถัดไป ถัดไป th_B a_I t^_I p_I a_I j^_E
+บน บน b_B o_I n^_E
+ประตู ประตู pr_B a_I t_I uu_E
+ปลดล็อค ปลดล็อค pl_B o_I t^_I l_I @_I k^_E
+มีด มีด m_B ii_I t^_E
+ย้อน ย้อน j_B @@_I n^_E
+ลิ้นชัก ลิ้นชัก l_B i_I n^_I ch_I a_I k^_E
+ล่าง ล่าง l_B aa_I ng^_E
+ศูนย์ ศูนย์ s_B uu_I n^_E
+สอง สอง s_B @@_I ng^_E
+สาม สาม s_B aa_I m^_E
+สี่ สี่ s_B ii_E
+หก หก h_B o_I k^_E
+หนึ่ง หนึ่ง n_B v_I ng^_E
+หยิบ หยิบ j_B i_I p^_E
+ห้า ห้า h_B aa_E
+เก้า เก้า k_B a_I w^_E
+เจ็ด เจ็ด c_B e_I t^_E
+เปิด เปิด p_B qq_I t^_E
+เหรียญ เหรียญ r_B iia_I n^_E
+แปด แปด p_B xx_I t^_E
+โต๊ะ โต๊ะ t_B o_E
+ใช้ ใช้ ch_B a_I j^_E
+ไข ไข kh_B a_I j^_E
+ไขควง ไขควง kh_B a_I j^_I kh_I uua_I ng^_E

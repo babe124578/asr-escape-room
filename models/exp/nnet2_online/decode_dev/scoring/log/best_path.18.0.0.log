@@ -1,0 +1,72 @@
+# lattice-scale --inv-acoustic-scale=18 "ark:gunzip -c exp/nnet2_online/decode_dev/lat.*.gz|" ark:- | lattice-add-penalty --word-ins-penalty=0.0 ark:- ark:- | lattice-best-path --word-symbol-table=exp/nnet2_online/graph/words.txt ark:- ark,t:exp/nnet2_online/decode_dev/scoring/18.0.0.tra 
+# Started at Mon Apr 29 03:58:54 UTC 2019
+#
+lattice-add-penalty --word-ins-penalty=0.0 ark:- ark:- 
+lattice-scale --inv-acoustic-scale=18 'ark:gunzip -c exp/nnet2_online/decode_dev/lat.*.gz|' ark:- 
+lattice-best-path --word-symbol-table=exp/nnet2_online/graph/words.txt ark:- ark,t:exp/nnet2_online/decode_dev/scoring/18.0.0.tra 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_015, best cost 14.7268 + -20.3563 = -5.62955 over 104 frames.
+1_015 ใช้ มีด 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_016, best cost 17.0817 + -21.3688 = -4.28704 over 101 frames.
+1_016 เปิด กล่อง 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_017, best cost 17.613 + -25.0803 = -7.4673 over 129 frames.
+1_017 เปิด ประตู 
+LOG (lattice-scale:main():lattice-scale.cc:90) Done 30 lattices.
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_018, best cost 22.1264 + -42.0105 = -19.8842 over 181 frames.
+1_018 เปิด ลิ้นชัก ชั้น บน 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_019, best cost 24.0401 + -42.5859 = -18.5459 over 163 frames.
+1_019 เปิด ลิ้นชัก ชั้น ล่าง 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_020, best cost 14.3025 + -13.1985 = 1.10399 over 76 frames.
+1_020 ปลดล็อค 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_021, best cost 15.7509 + -16.5377 = -0.786839 over 115 frames.
+1_021 ด่าน ก่อนหน้า 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_022, best cost 17.0677 + -16.0763 = 0.991451 over 161 frames.
+1_022 ด่าน ถัดไป 
+LOG (lattice-add-penalty:main():lattice-add-penalty.cc:62) Done adding word insertion penalty to 30 lattices.
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_023, best cost 18.442 + -13.8903 = 4.55179 over 92 frames.
+1_023 ย้อน กลับ 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 1_024, best cost 13.0007 + -26.2221 = -13.2213 over 112 frames.
+1_024 ศูนย์ ศูนย์ 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_000, best cost 19.8955 + -21.2288 = -1.33329 over 169 frames.
+2_000 ดู ตู้ ข้าง ซ้าย 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_001, best cost 16.7588 + -23.6724 = -6.91363 over 167 frames.
+2_001 ดู ตู้ ข้าง 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_002, best cost 12.8532 + -13.9336 = -1.08043 over 122 frames.
+2_002 ศูนย์ เก้า 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_003, best cost 12.8051 + -13.2745 = -0.46946 over 93 frames.
+2_003 ดู กล่อง 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_004, best cost 11.0786 + -9.77305 = 1.30551 over 76 frames.
+2_004 ศูนย์ หก 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_005, best cost 11.8983 + -14.0628 = -2.16451 over 90 frames.
+2_005 ดู ลิ้นชัก 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_006, best cost 15.4856 + -21.4726 = -5.98693 over 124 frames.
+2_006 ดู กำแพง 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_007, best cost 15.9585 + -23.607 = -7.64847 over 142 frames.
+2_007 หยิบ กุญแจ 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_008, best cost 14.105 + -20.2849 = -6.17994 over 117 frames.
+2_008 หยิบ เหรียญ 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 2_009, best cost 15.5928 + -23.2323 = -7.6395 over 149 frames.
+2_009 หยิบ ไขควง 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_010, best cost 11.3045 + -9.59998 = 1.70457 over 49 frames.
+3_010 หยิบ มีด 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_011, best cost 27.9495 + -45.4285 = -17.479 over 188 frames.
+3_011 ใช้ กุญแจ ไข ลิ้นชัก ชั้น บน 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_012, best cost 20.9802 + -30.3922 = -9.41203 over 121 frames.
+3_012 ใช้ กุญแจ เปิด ประตู 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_013, best cost 11.1565 + -17.0141 = -5.85754 over 58 frames.
+3_013 ใช้ เหรียญ 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_014, best cost 12.311 + -17.3593 = -5.04824 over 67 frames.
+3_014 ใช้ ไขควง 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_015, best cost 10.6332 + -13.5477 = -2.91447 over 43 frames.
+3_015 ใช้ มีด 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_016, best cost 13.4151 + -16.6542 = -3.23908 over 55 frames.
+3_016 เปิด กล่อง 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_017, best cost 12.1091 + -21.4774 = -9.36836 over 61 frames.
+3_017 เปิด ประตู 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_018, best cost 18.6476 + -27.8868 = -9.23921 over 114 frames.
+3_018 เปิด ลิ้นชัก ชั้น บน 
+LOG (lattice-best-path:main():lattice-best-path.cc:99) For utterance 3_068, best cost 9.87589 + -5.27982 = 4.59607 over 54 frames.
+3_068 สี่ สี่ 
+LOG (lattice-best-path:main():lattice-best-path.cc:124) Overall score per frame is -0.0478417 = 0.142413 [graph] + -0.190255 [acoustic] over 3293 frames.
+LOG (lattice-best-path:main():lattice-best-path.cc:128) Done 30 lattices, failed for 0
+# Accounting: time=0 threads=1
+# Ended (code 0) at Mon Apr 29 03:58:54 UTC 2019, elapsed time 0 seconds
