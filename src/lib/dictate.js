@@ -277,6 +277,8 @@ export default function(window){
 				} else if (data instanceof Blob) {
 					config.onError(ERR_SERVER, 'WebSocket: got Blob');
 				} else {
+					console.log("datakub")
+					console.log(data)
 					var res = JSON.parse(data);
 					if (res.status == 0) {
 						if (res.result) {

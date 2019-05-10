@@ -34,19 +34,12 @@ class Level1 extends Component {
     var ctx = canvas.getContext("2d");
     ctx.font = "30px Arial"
     ctx.fillStyle = "green";
-    canvas.addEventListener("mousemove", changeCursor, false);
 
     this.setState({
       text: "eiei"
     })
 
-    function changeCursor(e) { //getตำแหน่ง cursor บน canvas VIA console
-      e.preventDefault();
-      var rect = canvas.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
-      console.log("move: (" + x + ", " + y + ")");
-    }
+
 
     var currentWall = 1; //บอกว่าตอนนี้อยู่ฉากไหน
     /**
