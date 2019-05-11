@@ -64,13 +64,6 @@ export default class SpeechBar extends Component {
               transcription.add(hypos[0].transcript, false);
               let transcript = hypos[0].transcript.toString();
               console.log("Partial result ",transcript);
-              if(transcript.indexOf("โกวาจี") != -1) {
-                  this.setState({transcript: transcript.substr(transcript.indexOf("โกวาจี"))});
-              }
-              else {
-                  this.setState({transcript: ""});
-                  dictate.sendEOS();
-              }
               
               //__updateTranscript(tt.toString());
           }.bind(this),
@@ -82,27 +75,13 @@ export default class SpeechBar extends Component {
               }*/
               console.log("Result: best transcript "+transcription.toString())
               let transcript = transcription.toString();
-              if(transcript.indexOf("โกวาจี") != -1 || this.state.ignoreGowajee) {
                   // valid command
                   let cmd = transcript;
-                  if(!this.state.ignoreGowajee)
-                      cmd = transcript.substr(transcript.indexOf("โกวาจี")+7);
                   cmd = cmd.replace(' .','');
                   this.setState({transcript: cmd});
                   console.log("CMD",cmd);
-                  if(this.state.onlineMode) {
-                      clearTimeout(this.state.actionDetectorTimeout);
-                      this.state.actionDetectorOnline = false;
-                      this.cancelRecord();
-                      
-                      this.state.gowajeeDetectorOnline = true;
-                      this.state.gowajeeDetector.startListening();
-                  }
                   this.props.handleCommand(cmd);
-              }
-              else {
-                  this.setState({transcript: ""});
-              }
+              
               transcription.clear();
               //this.setState({transcript: transcription.toString()})
               
