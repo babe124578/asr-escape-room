@@ -1,7 +1,4 @@
 //JavaScript Audio Resampler (c) 2011 - Grant Galitz
-
-const workercode = () => {
-
 function Resampler(fromSampleRate, toSampleRate, channels, outputBufferSize, noReturn) {
 	this.fromSampleRate = fromSampleRate;
 	this.toSampleRate = toSampleRate;
@@ -219,12 +216,12 @@ function export16kMono(type){
 }
 
 // FIXME: doesn't work yet
-/*function exportSpeex(type){
+function exportSpeex(type){
   var buffer = mergeBuffers(recBuffers, recLength);
   var speexData = Speex.process(buffer);
   var audioBlob = new Blob([speexData], { type: type });
   this.postMessage(audioBlob);  
-}*/
+}
 
 function getBuffer() {
   var buffers = [];
@@ -333,13 +330,4 @@ function encodeRAW(samples){
   return view;
 }
 
-}
 
-
-let code = workercode.toString();
-code = code.substring(code.indexOf("{")+1, code.lastIndexOf("}"));
-code = code.replace('_this','this');
-const blob = new Blob([code], {type: "application/javascript"});
-const worker_script = URL.createObjectURL(blob);
-
-export default worker_script;

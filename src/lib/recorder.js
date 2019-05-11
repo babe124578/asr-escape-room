@@ -1,17 +1,13 @@
-import $ from 'jquery'
-import worker from '../lib/recorderWorker.js'
-export default function(window){
+(function(window){
 
-  var WORKER_PATH = '../lib/recorderWorker.js';
+  var WORKER_PATH = 'recorderWorker.js';
 
   var Recorder = function(source, cfg){
     var config = cfg || {};
     var bufferLen = config.bufferLen || 4096;
     this.context = source.context;
     this.node = this.context.createScriptProcessor(bufferLen, 1, 1);
-    console.log("WORKER IN RECORDER",config.workerPath);
     var worker = new Worker(config.workerPath || WORKER_PATH);
-    //var worker = new config.workerPath();
     worker.postMessage({
       command: 'init',
       config: {
@@ -87,7 +83,7 @@ export default function(window){
     }
 
     // FIXME: doesn't work yet
-    /*this.exportSpeex = function(cb, type){
+    this.exportSpeex = function(cb, type){
       currCallback = cb || config.callback;
       type = type || config.type || 'audio/speex';
       if (!currCallback) throw new Error('Callback not set');
@@ -95,7 +91,7 @@ export default function(window){
         command: 'exportSpeex',
         type: type
       });
-    }*/
+    }
 
     worker.onmessage = function(e){
       var blob = e.data;
@@ -115,7 +111,7 @@ export default function(window){
     click.initEvent("click", true, true);
     link.dispatchEvent(click);
   }
-    console.log(window);
+
   window.Recorder = Recorder;
 
-};
+})(window);
