@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "../CSS/Level1.css";
+import myWorker from "../lib/recorderWorker.js";
+
 
 import door from "../images/Level1/door.jpg";
 import knife from "../images/Level1/knife.jpg";
@@ -488,7 +490,7 @@ class Level1 extends Component {
   render() {
     return (
       <div className='container'>
-        <SpeechBar text={this.state.text} />
+        <SpeechBar text={this.state.text} worker={myWorker} />
         <div className="canvas-container">
           <canvas className="canva" ref="canvas" width={960} height={540} />
           <canvas className="canva" ref="canvasItem" width={135} height={540} style={{ float: "left" }} />
