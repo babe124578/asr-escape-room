@@ -1,61 +1,25 @@
-import React, { Component } from "react";
-import "../CSS/Level1.css";
-import myWorker from "../lib/recorderWorker.js";
+var door = "images/door.jpg";
+var knife = "images/knife.jpg";
+var noknife = "images/noknife.jpg";
+var roomBoxSafeKnife = "images/room_withboth.jpg";
+var roomBoxSafeNoknife = "images/room_both_noknife.jpg";
+var roomOpenboxSafeNoknife = "images/room_with_box_open.png";
+var popupCloseboxWithKnifeInroom = "images/popup-closebox-knife.jpg";
+var popupCloseboxWithoutKnifeInroom = "images/popup-closebox-noknife.jpg";
+var popupBoxOpenWithPassword = "images/popup-openbox.jpg";
+var knifeImage = "images/knife.png";
+var keyImage = "images/key.png";
+var itemBar = "images/itemBar.png"
+var safeclose = "images/safeclose.png";
+var safeopen = "images/safeopen.jpg";
 
 
-import door from "../images/Level1/door.jpg";
-import knife from "../images/Level1/knife.jpg";
-import noknife from "../images/Level1/noknife.jpg";
-import roomBoxSafeKnife from "../images/Level1/room_withboth.jpg";
-import roomBoxSafeNoknife from "../images/Level1/room_both_noknife.jpg";
-import roomOpenboxSafeNoknife from "../images/Level1/room_with_box_open.png";
-import popupCloseboxWithKnifeInroom from "../images/Level1/popup-closebox-knife.jpg";
-import popupCloseboxWithoutKnifeInroom from "../images/Level1/popup-closebox-noknife.jpg";
-import popupBoxOpenWithPassword from "../images/Level1/popup-openbox.jpg";
-import knifeImage from "../images/Level1/knife.png";
-import keyImage from "../images/Level1/key.png";
-import itemBar from "../images/Level1/itemBar.png"
-import safeclose from "../images/Level1/safeclose.png";
-import safeopen from "../images/Level1/safeopen.jpg";
+var hasKnife = false; //ไม่มีมีดเปิดกล่องไม่ได้
+var hasKey = false; //case true = มีกุญแจ
+var isBoxOpen = false;
+var playerPass = '';
 
-import SpeechBar from "./SpeechBar";
-
-class Level1 extends Component {
-  constructor() {
-    super()
-    this.state = {
-      text: "test text",
-      temp: ""
-    }
-  }
-  componentDidMount() {
-    String.prototype.replaceAll = function (search, replacement) {
-      var target = this;
-      return target.split(search).join(replacement);
-    };
-    //for draw canvas
-    var canvas = this.refs.canvas; //Here we are simply finding the <canvas> element and saving it to a variable.
-    var canvasItem = this.refs.canvasItem;
-    var ctxItem = canvasItem.getContext("2d");
-    //var eieiz = this.refs.eiei;
-    var ctx = canvas.getContext("2d");
-    ctx.font = "30px Arial"
-    ctx.fillStyle = "green";
-    canvas.addEventListener("mousemove", changeCursor, false);
-
-    this.setState({
-      text: "eiei"
-    })
-
-    function changeCursor(e) { //getตำแหน่ง cursor บน canvas VIA console
-      e.preventDefault();
-      var rect = canvas.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
-      console.log("move: (" + x + ", " + y + ")");
-    }
-
-    var currentWall = 1; //บอกว่าตอนนี้อยู่ฉากไหน
+var currentWall = 1; //บอกว่าตอนนี้อยู่ฉากไหน
     /**
      * == 1 -> roomBoxSafeKnife
      * == 2 -> knife
@@ -70,19 +34,22 @@ class Level1 extends Component {
      * == 11 -> safeclose
      * == 12 -> safeopen
      */
-    var asrtext = this.state.temp;
-    asrtext = asrtext.replaceAll(" ", "");
-    asrtext = asrtext.replaceAll(".", "");
-    asrtext = asrtext.replaceAll("ศูนย์", "0");
-    asrtext = asrtext.replaceAll("หนึ่ง", "1");
-    asrtext = asrtext.replaceAll("สอง", "2");
-    asrtext = asrtext.replaceAll("สาม", "3");
-    asrtext = asrtext.replaceAll("สี่", "4");
-    asrtext = asrtext.replaceAll("ห้า", "5");
-    asrtext = asrtext.replaceAll("หก", "6");
-    asrtext = asrtext.replaceAll("เจ็ด", "7");
-    asrtext = asrtext.replaceAll("แปด", "8");
-    asrtext = asrtext.replaceAll("เก้า", "9");
+
+// From componentDidMount --------------------------------------------------------------------
+    String.prototype.replaceAll = function (search, replacement) {
+      var target = this;
+      return target.split(search).join(replacement);
+    };
+    //for draw canvas
+    var canvas = document.getElementById("canvas"); //Here we are simply finding the <canvas> element and saving it to a variable.
+    var canvasItem = document.getElementById("canvasItem");
+    var ctxItem = canvasItem.getContext("2d");
+    //var eieiz = this.refs.eiei;
+    var ctx = canvas.getContext("2d");
+    ctx.font = "30px Arial"
+    ctx.fillStyle = "green";
+	
+    var asrtext = ""
 
     var img1 = new Image();
     var img2 = new Image();
@@ -131,13 +98,9 @@ class Level1 extends Component {
         item4, 0, 0, item4.width, item4.height, 10, 415, 115, 115
       );
     };
-    canvas.addEventListener("mousedown", changeImage, false); //เพื่ออรับพิกัด Mouse ตลอดเวลา
+    canvas.addEventListener("mousedown", changeImage, false); //เพื่อรับ change image ตาม mouse click
 
-    var hasKnife = false; //ไม่มีมีดเปิดกล่องไม่ได้
-    var hasKey = false; //case true = มีกุญแจ
-    var isBoxOpen = false;
-    var playerPass = '';
-
+    /* Change Image is HEREEEEEEEEEEEEEE */
     function changeImage(e) {
       console.log('haskey = ' + hasKey);
       console.log('hasknife = ' + hasKnife);
@@ -485,19 +448,352 @@ class Level1 extends Component {
           break;
       }
     }
-  }
+//END From componentDidMount-----------------------------------------------------------
 
-  render() {
-    return (
-      <div className='container'>
-        <SpeechBar text={this.state.text} worker={myWorker} />
-        <div className="canvas-container">
-          <canvas className="canva" ref="canvas" width={960} height={540} />
-          <canvas className="canva" ref="canvasItem" width={135} height={540} style={{ float: "left" }} />
-        </div>
-      </div>
-    );
+
+function changeImage2(asrtextkub) {
+  console.log("asrtextkub")
+  console.log(asrtextkub)
+  asrtextkub = asrtextkub.replaceAll(" ", "");
+  asrtextkub = asrtextkub.replaceAll(".", "");
+  asrtextkub = asrtextkub.replaceAll("ศูนย์", "0");
+  asrtextkub = asrtextkub.replaceAll("หนึ่ง", "1");
+  asrtextkub = asrtextkub.replaceAll("สอง", "2");
+  asrtextkub = asrtextkub.replaceAll("สาม", "3");
+  asrtextkub = asrtextkub.replaceAll("สี่", "4");
+  asrtextkub = asrtextkub.replaceAll("ห้า", "5");
+  asrtextkub = asrtextkub.replaceAll("หก", "6");
+  asrtextkub = asrtextkub.replaceAll("เจ็ด", "7");
+  asrtextkub = asrtextkub.replaceAll("แปด", "8");
+  asrtextkub = asrtextkub.replaceAll("เก้า", "9");
+  console.log("asrtextkub after replace")
+  console.log(asrtextkub)
+  switch (currentWall) {
+    case 1: //room with everything
+      if (asrtextkub.indexOf("ดูตู้ข้างขวา") >= 0) {
+        img1.src = knife;
+        currentWall = 2;
+        clearTranscription()
+      } else if (asrtextkub.indexOf("ดูกล่อง") >= 0) {
+        img1.src = popupCloseboxWithKnifeInroom;
+        currentWall = 6;
+        clearTranscription()
+      } else if (asrtextkub.indexOf("ดูตู้ข้างซ้าย") >= 0) {
+        if (hasKey === false) {
+          img1.src = safeclose;
+          currentWall = 11;
+          clearTranscription()
+        } else {
+          img1.src = safeopen;
+          currentWall = 12;
+          clearTranscription()
+        }
+      } else if (asrtextkub.indexOf("ดูประตู") >= 0) { //กดประตู
+        img1.src = door;
+        currentWall = 10;
+        clearTranscription()
+      }
+      break;
+    case 2: //ตู้ขวา with knife
+      if (asrtextkub.indexOf("หยิบมีด") >= 0) {
+        img1.src = noknife;
+        hasKnife = true;
+        currentWall = 3;
+        item1.src = knifeImage;
+        clearTranscription()
+      } else if (asrtextkub.indexOf("ย้อนกลับ") >= 0) {
+        img1.src = roomBoxSafeKnife;
+        currentWall = 1;
+        clearTranscription()
+      }
+      break;
+    case 3: //ตู้ขวา without knife
+      if (asrtextkub.indexOf("ย้อนกลับ") >= 0) {
+        if (isBoxOpen === false) {
+          img1.src = roomBoxSafeNoknife;
+          currentWall = 4;
+          clearTranscription()
+        } else if (isBoxOpen === true) {
+          img1.src = roomOpenboxSafeNoknife;
+          currentWall = 5;
+          clearTranscription()
+        }
+      }
+      break;
+    case 4: //room with everything except knife
+      if (asrtextkub.indexOf("ดูตู้ข้างขวา") >= 0) {
+        img1.src = noknife;
+        currentWall = 3;
+        clearTranscription()
+      } else if (asrtextkub.indexOf("ดูกล่อง") >= 0) {
+        img1.src = popupCloseboxWithoutKnifeInroom;
+        currentWall = 7;
+        clearTranscription()
+      } else if (asrtextkub.indexOf("ดูประตู") >= 0) { //กดประตู
+        img1.src = door;
+        currentWall = 10;
+        clearTranscription()
+      } else if (asrtextkub.indexOf("ดูตู้ข้างซ้าย") >= 0) {
+        if (hasKey === false) {
+          img1.src = safeclose;
+          currentWall = 11;
+          clearTranscription()
+        } else {
+          img1.src = safeopen;
+          currentWall = 12;
+          clearTranscription()
+        }
+      }
+      break;
+    case 5: //ห้องที่กล่องเปิดแล้ว
+      if (asrtextkub.indexOf("ดูตู้ข้างขวา") >= 0) {
+        img1.src = noknife;
+        currentWall = 3;
+        clearTranscription()
+      } else if (asrtextkub.indexOf("ดูประตู") >= 0) { //กดประตู
+        img1.src = door;
+        currentWall = 10; 
+        clearTranscription()
+      } else if (asrtextkub.indexOf("ดูตู้ข้างซ้าย") >= 0) {
+        if (hasKey === false) {
+          img1.src = safeclose;
+          currentWall = 11;
+          clearTranscription()
+        } else {
+          img1.src = safeopen;
+          currentWall = 12;
+          clearTranscription()
+        }
+      }
+      break;
+    case 6: //popupcloseknife
+      if (asrtextkub.indexOf("ย้อนกลับ") >= 0) {
+        img1.src = roomBoxSafeKnife;
+        currentWall = 1;
+        clearTranscription()
+      }
+      break;
+    case 7: //popupclosenoknife
+      if (asrtextkub.indexOf("ย้อนกลับ") >= 0) {
+        img1.src = roomBoxSafeNoknife;
+        currentWall = 4;
+        clearTranscription()
+      } else if (asrtextkub.indexOf("ใช้มีดเปิดกล่อง") >= 0) {
+        isBoxOpen = true;
+        img1.src = popupBoxOpenWithPassword;
+        currentWall = 8;
+        clearTranscription()
+      }
+      break;
+    case 8: //popupopenbox
+      if (asrtextkub.indexOf("ย้อนกลับ") >= 0) {
+        img1.src = roomOpenboxSafeNoknife;
+        currentWall = 5;
+        clearTranscription()
+      }
+      break;
+    case 9: // leftdesk
+      if (asrtextkub.indexOf("ย้อนกลับ") >= 0) {
+        hasKey = true;
+        img1.src = roomOpenboxSafeNoknife;
+        currentWall = 5;
+        clearTranscription()
+      }
+      break;
+    case 10: // door
+      if (asrtextkub.indexOf("ย้อนกลับ") >= 0) {
+        if (isBoxOpen === true) {
+          img1.src = roomOpenboxSafeNoknife;
+          currentWall = 5;
+          clearTranscription()
+        } else if (hasKnife === true && isBoxOpen === false) {
+          img1.src = roomBoxSafeNoknife;
+          currentWall = 4;
+          clearTranscription()
+        } else if (hasKnife === false) {
+          img1.src = roomBoxSafeKnife;
+          currentWall = 1;
+          clearTranscription()
+        }
+      } else if (asrtextkub.indexOf("ใช้กุญแจเปิดประตู") >= 0) { //กดประตูเพื่อเปิด
+        if (hasKey) {
+          console.log("จบ")
+          setTimeout(function () {
+            ctx.font = "150px Roboto";
+            ctx.fillText("จบแล้วจ้า", canvas.width / 2 - 300, canvas.height / 2);
+          }, 20);
+        }
+        clearTranscription()
+      }
+      break;
+    case 11:
+      asrtextkub = asrtextkub.replace(/\D/g,'');
+      if (!isNaN(parseInt(asrtextkub))) {
+        ctx.fillText(asrtextkub, 465, 302);
+      }
+      if (asrtextkub.indexOf("44") >= 0) {
+        setTimeout(function () {
+          img1.src = safeopen;
+          currentWall = 12;
+          item2.src = keyImage;
+          hasKey = true;
+        }, 30);
+        clearTranscription()
+      }
+      if (asrtextkub.indexOf("ย้อนกลับ") >= 0) {
+        if (hasKnife === true && isBoxOpen === false) {
+          img1.src = roomBoxSafeNoknife;
+          currentWall = 4;
+          clearTranscription()
+        } else if (hasKnife === false) {
+          img1.src = roomBoxSafeKnife;
+          currentWall = 1;
+          clearTranscription()
+        } else if (isBoxOpen === false && hasKnife === true) {
+          img1.src = roomOpenboxSafeNoknife;
+          currentWall = 5;
+          clearTranscription()
+        }
+      } 
+      break;
+    case 12:
+      if (asrtextkub.indexOf("ย้อนกลับ") >= 0) {
+        if (hasKnife === true && isBoxOpen === false) {
+          img1.src = roomBoxSafeNoknife;
+          currentWall = 4;
+          clearTranscription()
+        } else if (hasKnife === false) {
+          img1.src = roomBoxSafeKnife;
+          currentWall = 1;
+          clearTranscription()
+        } else if (isBoxOpen === true && hasKnife === true) {
+          img1.src = roomOpenboxSafeNoknife;
+          currentWall = 5;
+          clearTranscription()
+        }
+      }
+      break;
+    default:
+      break;
   }
 }
+//
 
-export default Level1;
+
+
+// Extend from demo.js
+
+var tt = new Transcription();
+
+var dictate = new Dictate({
+		server : "ws://127.0.0.1:8080/client/ws/speech",
+		serverStatus : "ws://127.0.0.1:8080/client/ws/status",
+		recorderWorkerPath : '../lib/recorderWorker.js',
+		onReadyForSpeech : function() {
+			__message("READY FOR SPEECH");
+			__status("Kuulan ja transkribeerin...");
+		},
+		onEndOfSpeech : function() {
+			__message("END OF SPEECH");
+			__status("Transkribeerin...");
+		},
+		onEndOfSession : function() {
+			__message("END OF SESSION");
+			__status("");
+		},
+		onServerStatus : function(json) {
+			__serverStatus(json.num_workers_available + ':' + json.num_requests_processed);
+			if (json.num_workers_available == 0) {
+				$("#buttonStart").prop("disabled", true);
+				$("#serverStatusBar").addClass("highlight");
+			} else {
+				$("#buttonStart").prop("disabled", false);
+				$("#serverStatusBar").removeClass("highlight");
+			}
+		},
+		onPartialResults : function(hypos) {
+			// TODO: demo the case where there are more hypos
+			tt.add(hypos[0].transcript, false);
+			__updateTranscript(tt.toString());
+		},
+		onResults : function(hypos) {
+			// TODO: demo the case where there are more results
+			tt.add(hypos[0].transcript, true);
+			console.log('hypos')
+			console.log(hypos)
+			__updateTranscript(tt.toString());
+			changeImage2(tt.toString())
+			// diff() is defined only in diff.html
+			if (typeof(diff) == "function") {
+				diff();
+			}
+		},
+		onError : function(code, data) {
+			__error(code, data);
+			__status("Viga: " + code);
+			dictate.cancel();
+		},
+		onEvent : function(code, data) {
+			__message(code, data);
+		}
+	});
+
+// Private methods (called from the callbacks)
+function __message(code, data) {
+	log.innerHTML = "msg: " + code + ": " + (data || '') + "\n" + log.innerHTML;
+}
+
+function __error(code, data) {
+	log.innerHTML = "ERR: " + code + ": " + (data || '') + "\n" + log.innerHTML;
+}
+
+function __status(msg) {
+	statusBar.innerHTML = "status " + msg;
+}
+
+function __serverStatus(msg) {
+	serverStatusBar.innerHTML = "serverstatus " + msg;
+}
+
+function __updateTranscript(text) {
+	$("#trans").val(text);
+}
+
+// Public methods (called from the GUI)
+function toggleLog() {
+	$(log).toggle();
+}
+function clearLog() {
+	log.innerHTML = "";
+}
+
+function clearTranscription() {
+	tt = new Transcription();
+	$("#trans").val("");
+}
+
+function startListening() {
+	dictate.startListening();
+}
+
+function stopListening() {
+	dictate.stopListening();
+}
+
+function cancel() {
+	dictate.cancel();
+}
+
+function init() {
+	dictate.init();
+}
+
+function showConfig() {
+	var pp = JSON.stringify(dictate.getConfig(), undefined, 2);
+	log.innerHTML = pp + "\n" + log.innerHTML;
+	$(log).show();
+}
+
+window.onload = function() {
+	init();
+};
