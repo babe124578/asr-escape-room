@@ -451,6 +451,23 @@ var currentWall = 1; //บอกว่าตอนนี้อยู่ฉาก
 //END From componentDidMount-----------------------------------------------------------
 
 
+function checkText(asrtext,checktext){ // "ดู ตู้ ข้าง สี่ ซ้าย", "ดู ตู้ ข้าง ซ้าย
+  var i = 0
+  asrtext = asrtext.split(" ");
+  checktext = checktext.split(" ");
+  for (each of asrtext) { 
+    if(each == checktext[i]) {
+      //console.log(i);
+      i++;
+      if(i == checktext.length){
+        console.log("success checkText")
+        return true
+      }
+    } 
+    //console.log(each)
+  }
+}
+
 
 function changeImage2(asrtextkub) {
   console.log("asrtextkub")
@@ -470,15 +487,15 @@ function changeImage2(asrtextkub) {
   console.log(asrtextkub)
   switch (currentWall) {
     case 1: //room with everything
-      if (checktText(asrtextkub,"ดู ตู้ ข้าง ขวา")) {
+      if (checkText(asrtextkub,"ดู ตู้ ข้าง ขวา")) {
         img1.src = knife;
         currentWall = 2;
         clearTranscription()
-      } else if (checktText(asrtextkub,"ดู กล่อง")) {
+      } else if (checkText(asrtextkub,"ดู กล่อง")) {
         img1.src = popupCloseboxWithKnifeInroom;
         currentWall = 6;
         clearTranscription()
-      } else if (checktText(asrtextkub,"ดู ตู้ ข้าง ซ้าย")) {
+      } else if (checkText(asrtextkub,"ดู ตู้ ข้าง ซ้าย")) {
         if (hasKey === false) {
           img1.src = safeclose;
           currentWall = 11;
@@ -488,27 +505,27 @@ function changeImage2(asrtextkub) {
           currentWall = 12;
           clearTranscription()
         }
-      } else if (checktText(asrtextkub,"ดู ประตู")) { //กดประตู
+      } else if (checkText(asrtextkub,"ดู ประตู")) { //กดประตู
         img1.src = door;
         currentWall = 10;
         clearTranscription()
       }
       break;
     case 2: //ตู้ขวา with knife
-      if (checktText(asrtextkub,"หยิบ มีด")) {
+      if (checkText(asrtextkub,"หยิบ มีด")) {
         img1.src = noknife;
         hasKnife = true;
         currentWall = 3;
         item1.src = knifeImage;
         clearTranscription()
-      } else if (checktText(asrtextkub,"ย้อน กลับ")) {
+      } else if (checkText(asrtextkub,"ย้อน กลับ")) {
         img1.src = roomBoxSafeKnife;
         currentWall = 1;
         clearTranscription()
       }
       break;
     case 3: //ตู้ขวา without knife
-      if (checktText(asrtextkub,"ย้อน กลับ")) {
+      if (checkText(asrtextkub,"ย้อน กลับ")) {
         if (isBoxOpen === false) {
           img1.src = roomBoxSafeNoknife;
           currentWall = 4;
@@ -521,19 +538,19 @@ function changeImage2(asrtextkub) {
       }
       break;
     case 4: //room with everything except knife
-      if (checktText(asrtextkub,"ดู ตู้ ข้าง ขวา")) {
+      if (checkText(asrtextkub,"ดู ตู้ ข้าง ขวา")) {
         img1.src = noknife;
         currentWall = 3;
         clearTranscription()
-      } else if (checktText(asrtextkub,"ดู กล่อง")) {
+      } else if (checkText(asrtextkub,"ดู กล่อง")) {
         img1.src = popupCloseboxWithoutKnifeInroom;
         currentWall = 7;
         clearTranscription()
-      } else if (checktText(asrtextkub,"ดู ประตู")) { //กดประตู
+      } else if (checkText(asrtextkub,"ดู ประตู")) { //กดประตู
         img1.src = door;
         currentWall = 10;
         clearTranscription()
-      } else if (checktText(asrtextkub,"ดู ตู้ ข้าง ซ้าย")) {
+      } else if (checkText(asrtextkub,"ดู ตู้ ข้าง ซ้าย")) {
         if (hasKey === false) {
           img1.src = safeclose;
           currentWall = 11;
@@ -546,15 +563,15 @@ function changeImage2(asrtextkub) {
       }
       break;
     case 5: //ห้องที่กล่องเปิดแล้ว
-      if (checktText(asrtextkub,"ดู ตู้ ข้าง ขวา")) {
+      if (checkText(asrtextkub,"ดู ตู้ ข้าง ขวา")) {
         img1.src = noknife;
         currentWall = 3;
         clearTranscription()
-      } else if (checktText(asrtextkub,"ดู ประตู")) { //กดประตู
+      } else if (checkText(asrtextkub,"ดู ประตู")) { //กดประตู
         img1.src = door;
         currentWall = 10; 
         clearTranscription()
-      } else if (checktText(asrtextkub,"ดู ตู้ ข้าง ซ้าย")) {
+      } else if (checkText(asrtextkub,"ดู ตู้ ข้าง ซ้าย")) {
         if (hasKey === false) {
           img1.src = safeclose;
           currentWall = 11;
@@ -567,18 +584,18 @@ function changeImage2(asrtextkub) {
       }
       break;
     case 6: //popupcloseknife
-      if (checktText(asrtextkub,"ย้อน กลับ")) {
+      if (checkText(asrtextkub,"ย้อน กลับ")) {
         img1.src = roomBoxSafeKnife;
         currentWall = 1;
         clearTranscription()
       }
       break;
     case 7: //popupclosenoknife
-      if (checktText(asrtextkub,"ย้อน กลับ")) {
+      if (checkText(asrtextkub,"ย้อน กลับ")) {
         img1.src = roomBoxSafeNoknife;
         currentWall = 4;
         clearTranscription()
-      } else if (checktText(asrtextkub,"ใช้ มีด เปิด กล่อง")) {
+      } else if (checkText(asrtextkub,"เปิด กล่อง")) {
         isBoxOpen = true;
         img1.src = popupBoxOpenWithPassword;
         currentWall = 8;
@@ -586,14 +603,14 @@ function changeImage2(asrtextkub) {
       }
       break;
     case 8: //popupopenbox
-      if (checktText(asrtextkub,"ย้อน กลับ")) {
+      if (checkText(asrtextkub,"ย้อน กลับ")) {
         img1.src = roomOpenboxSafeNoknife;
         currentWall = 5;
         clearTranscription()
       }
       break;
     case 9: // leftdesk
-      if (checktText(asrtextkub,"ย้อน กลับ")) {
+      if (checkText(asrtextkub,"ย้อน กลับ")) {
         hasKey = true;
         img1.src = roomOpenboxSafeNoknife;
         currentWall = 5;
@@ -601,7 +618,7 @@ function changeImage2(asrtextkub) {
       }
       break;
     case 10: // door
-      if (checktText(asrtextkub,"ย้อน กลับ")) {
+      if (checkText(asrtextkub,"ย้อน กลับ")) {
         if (isBoxOpen === true) {
           img1.src = roomOpenboxSafeNoknife;
           currentWall = 5;
@@ -615,7 +632,7 @@ function changeImage2(asrtextkub) {
           currentWall = 1;
           clearTranscription()
         }
-      } else if (checktText(asrtextkub,"ใช้ กุญแจ เปิด ประตู")) { //กดประตูเพื่อเปิด
+      } else if (checkText(asrtextkub,"เปิด ประตู")) { //กดประตูเพื่อเปิด
         if (hasKey) {
           console.log("จบ")
           setTimeout(function () {
@@ -627,7 +644,21 @@ function changeImage2(asrtextkub) {
       }
       break;
     case 11:
-
+      if (checkText(asrtextkub,"ย้อน กลับ")) {
+        if (hasKnife === true && isBoxOpen === false) {
+          img1.src = roomBoxSafeNoknife;
+          currentWall = 4;
+          clearTranscription()
+        } else if (hasKnife === false) {
+          img1.src = roomBoxSafeKnife;
+          currentWall = 1;
+          clearTranscription()
+        } else if (isBoxOpen === true && hasKnife === true) {
+          img1.src = roomOpenboxSafeNoknife;
+          currentWall = 5;
+          clearTranscription()
+        }
+      } 
       asrtextkub = asrtextkub.replace(/\D/g,''); // "ดู ตู้ 4 ข้าง 4" -> "44"
       if (!isNaN(parseInt(asrtextkub))) {	// draw number at input screen
         ctx.fillText(asrtextkub, 465, 302);
@@ -641,24 +672,10 @@ function changeImage2(asrtextkub) {
         }, 30);
         clearTranscription()
       } // else if len > 2 , clear transcript
-      if (checktText(asrtextkub,"ย้อน กลับ")) {
-        if (hasKnife === true && isBoxOpen === false) {
-          img1.src = roomBoxSafeNoknife;
-          currentWall = 4;
-          clearTranscription()
-        } else if (hasKnife === false) {
-          img1.src = roomBoxSafeKnife;
-          currentWall = 1;
-          clearTranscription()
-        } else if (isBoxOpen === false && hasKnife === true) {
-          img1.src = roomOpenboxSafeNoknife;
-          currentWall = 5;
-          clearTranscription()
-        }
-      } 
+
       break;
     case 12:
-      if (checktText(asrtextkub,"ย้อน กลับ")) {
+      if (checkText(asrtextkub,"ย้อน กลับ")) {
         if (hasKnife === true && isBoxOpen === false) {
           img1.src = roomBoxSafeNoknife;
           currentWall = 4;
@@ -679,23 +696,6 @@ function changeImage2(asrtextkub) {
   }
 }
 //
-
-function checkText(asrtext,checktext){ // "ดู ตู้ ข้าง สี่ ซ้าย", "ดู ตู้ ข้าง ซ้าย
-	var i = 0
-	asrtext = asrtext.split(" ");
-	checktext = checktext.split(" ");
-	for (each of asrtext) { 
-		if(each == checktext[i]) {
-			//console.log(i);
-			i++;
-			if(i == checktext.length){
-				console.log("success checkText")
-				return true
-			}
-		} 
-		//console.log(each)
-	}
-}
 
 
 // Extend from demo.js
