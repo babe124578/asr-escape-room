@@ -18,7 +18,7 @@ When you are in Gstreamer server command line, you can finally start the server 
 Check if the process starts successfully by looking at the log file at /opt/worker.log see it starts sucessfully. Usually it will fails if you put the wrong paths to some files.
 
 ### Start up the escape room game application
-Start the program by openning the demo/app.html
+Start the program by openning the demo/app.html.
 
 **Remark: please open the demo/app.html by using the lastest version of `firefox browser` in order to use the application smoothly**
 
@@ -40,4 +40,4 @@ Start the program by openning the demo/app.html
 # Notes
 
 - If the server is not respond for a long time, there might be some problem with the Gstreamer server. Restart the server should help.
-- Again, Please open the web application with firefox browser
+- Again, Please open the web application with firefox browser.
