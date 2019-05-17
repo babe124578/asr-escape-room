@@ -708,11 +708,10 @@ var dictate = new Dictate({
 		recorderWorkerPath : '../lib/recorderWorker.js',
 		onReadyForSpeech : function() {
 			__message("READY FOR SPEECH");
-			__status("Kuulan ja transkribeerin...");
+			//__status("Kuulan ja transkribeerin...");
 		},
 		onEndOfSpeech : function() {
 			__message("END OF SPEECH");
-			__status("Transkribeerin...");
 		},
 		onEndOfSession : function() {
 			__message("END OF SESSION");
@@ -747,7 +746,7 @@ var dictate = new Dictate({
 		},
 		onError : function(code, data) {
 			__error(code, data);
-			__status("Viga: " + code);
+			__status("Code: " + code);
 			dictate.cancel();
 		},
 		onEvent : function(code, data) {

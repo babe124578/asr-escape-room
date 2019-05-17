@@ -4,22 +4,28 @@
 	margin-bottom: .5em;
 	padding: 0;
 }
+#trans {
+	width: 282px;
+	outline: none;
+}
 #log {
-	font-size: 80%
+	margin-left: 10%;
+	font-size: 80%;
+	overflow-y: scroll;
+	visibility: hidden;
 }
 #statusBar {
 	font-family: monospace;
-	color: #9F000F;
+	color: #FFFFFF;
 	margin-top: 1em;
 	margin-bottom: 1em;
 	padding: 0;
 }
 #serverStatusBar {
-	bottom: 0.4em;
-	right: 0.4em;
 	top: auto;
 	left: auto;
 	font-family: monospace;
+	color: #FFFFFF;
 	padding: 0.2em 0.2em 0.2em 0.2em;
 }
 .highlight {
@@ -89,7 +95,9 @@ canvas {
 .container {
     width: 1095px;
     height: 640px;
-    background-color: white;
+	background-color: #000000;
+	display: grid;
+	grid-template-columns: 450px 100px auto;
 }
 
 
@@ -100,9 +108,9 @@ canvas {
     width: 1095px;
     height: 100px;
     border: 1px solid #000000;
-    background-color: #FFFFFF;
+    background-color: #000000;
     display: grid;
-    grid-template-columns: 100px auto;
+    grid-template-columns: 150px 300px;
 }
 .asrText {
     margin-left: 25px;
