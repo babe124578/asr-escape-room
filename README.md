@@ -15,7 +15,7 @@ When you are in Gstreamer server command line, you can finally start the server 
 
 ` /opt/start.sh -y /opt/models/sample_nnet2.yaml`
 
-Check if the process starts successfully by looking at the log file at /opt/worker.log see it starts sucessfully. Usually it will fails if you put the wrong paths to some files.
+Check if the process starts successfully by looking at the log file at `/opt/worker.log` see it starts sucessfully. Usually it will fails if you put the wrong paths to some files.
 
 ### Start up the escape room game application
 Start the program by openning the demo/app.html.
