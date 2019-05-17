@@ -30,10 +30,14 @@ Start the program by openning the demo/app.html
 3.  Start/Stop - To start recording, press the Start button. After that, say the command you want and then press the Stop button to execute the command or you can leave it recording.
 
 # List of commands available
-- ดู ตู้ข้างซ้าย/ตู้ข้างซ้ายขวา/ประตู/กล่อง
-- หยิบกุญแจ/มีด
-- เปิดกล่อง/ประตู			
+- ดู ตู้ข้างซ้าย / ตู้ข้างซ้ายขวา / ประตู / กล่อง
+- หยิบ กุญแจ / มีด
+- เปิด กล่อง / ประตู			
 - ย้อนกลับ
 - ศูนย์ศูนย์ - เก้าเก้า
 - ใช้กุญแจเปิดประตู
-	
+
+# Notes
+
+- If the server is not respond for a long time, there might be some problem with the Gstreamer server. Restart the server should help.
+- Again, Please open the web application with firefox browser
